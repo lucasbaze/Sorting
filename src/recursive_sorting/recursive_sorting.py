@@ -45,11 +45,34 @@ def merge_sort( arr ):
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
+    left = arr[start : mid]
+    right = arr[mid + 1 : end]
+
+    i = j = 0
+    for k in range(start, end + 1):
+        if(i >= len(left)):
+            arr[k] = right[j]
+            j += 1
+        elif(j >= len(right)):
+            arr[k] = left[i]
+            i += 1
+        elif(left[i] < right[j]):
+            arr[k] = left[i]
+            i += 1
+        elif(left[i] > right[j]):
+            arr[k] = right[j]
+            j += 1 
 
     return arr
 
-def merge_sort_in_place(arr, l, r): 
+# Doesn't pass test... I'm mad... stupid merge sort
+def merge_sort_in_place(arr, left, right): 
     # TO-DO
+    if(left < right):
+        middle = len(arr) // 2
+        merge_sort_in_place(arr, left, middle)
+        merge_sort_in_place(arr, middle + 1, right)
+        merge_in_place(arr, left, middle, last)
 
     return arr
 
